@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 public class StudentTest {
 
     @Test
-    public void getAllTeacherNamesTest() {
+    public void get_teachers_names_test() {
 
         Teacher teacher1 = new Teacher("John", "Smith", Utils.dateToTypeZoneDateTime("1976-12-12"));
         Teacher teacher2 = new Teacher("Mary", "Sue", Utils.dateToTypeZoneDateTime("1966-01-05"));
@@ -30,7 +30,7 @@ public class StudentTest {
     }
 
     @Test
-    public void getCoursesTest(){
+    public void get_courses_test(){
         Teacher teacher1 = new Teacher("Gary", "Sue", Utils.dateToTypeZoneDateTime("1983-10-10"));
         Teacher teacher2 = new Teacher("Joe", "Moe", Utils.dateToTypeZoneDateTime("1983-10-10"));
         Teacher teacher3 = new Teacher("Fritz", "Kritz", Utils.dateToTypeZoneDateTime("1983-10-10"));
