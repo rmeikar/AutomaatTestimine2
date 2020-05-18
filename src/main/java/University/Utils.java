@@ -1,7 +1,6 @@
 package University;
 
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class Utils {
@@ -15,8 +14,8 @@ public class Utils {
         return ZonedDateTime.parse(String.format("%sT00:00:00+00:00[UTC]", date_yyyy_MM_dd));
     }
 
-    public static String getDateString(ZonedDateTime date) {
-        return date.format(DateTimeFormatter.ISO_LOCAL_DATE);
+    public static int countHolidays(ZonedDateTime startDay, ZonedDateTime finalDay) {
+        PublicHolidayService holidayService = new PublicHolidayService();
+        return holidayService.getWeekDayHolidayCount(startDay, finalDay);
     }
-
 }

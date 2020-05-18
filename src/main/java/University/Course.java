@@ -1,6 +1,8 @@
 package University;
 
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class Course {
     private String courseName;
@@ -17,6 +19,31 @@ public class Course {
         this.endDate = endDate;
     }
 
+    public Course() {
+
+    }
+
+    public long getWorkingDays() {
+        LocalDate start = startDate.toLocalDate();
+        LocalDate end = endDate.toLocalDate().plusDays(1);
+
+        int startW = start.getDayOfWeek().getValue();
+        int endW = end.getDayOfWeek().getValue();
+
+        long days = ChronoUnit.DAYS.between(start, end);
+        long result = days - 2 * (days / 7); //remove weekends
+
+        if (days % 7 != 0) { //deal with the rest days
+            if (startW == 7) {
+                result -= 1;
+            } else if (endW == 7) {  //they can't both be Sunday, otherwise rest would be zero
+                result -= 1;
+            } else if (endW < startW) { //another weekend is included
+                result -= 2;
+            }
+        }
+        return result - Utils.countHolidays(startDate, endDate);
+    }
     public String getCourseName() {
         return courseName;
     }
