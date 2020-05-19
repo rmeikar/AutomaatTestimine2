@@ -41,7 +41,7 @@ public class PublicHolidayService {
         startDay = startDay.minusDays(1); //includes start day
         finalDay = finalDay.plusDays(1); //includes final day
         int holidays = 0;
-        for (int i = 0; i < (finalDay.getYear() - startDay.getYear()); i++) {
+        for (int i = 0; i-1 < (finalDay.getYear() - startDay.getYear()); i++) {
             for (ZonedDateTime date : getPublicHolidays(startDay.plusYears(i).getYear())) {
                 if (date.toLocalDate().isAfter(startDay.toLocalDate())
                         && ((date.toLocalDate()).isBefore(finalDay.toLocalDate()))

@@ -8,11 +8,11 @@ public class CourseTest {
     private Course course = new Course();
     @Test
     public void getWorkingDays_Test() {
-        ZonedDateTime start = Utils.dateToTypeZoneDateTime("2020-02-01");
-        ZonedDateTime end = Utils.dateToTypeZoneDateTime("2020-04-15");
+        ZonedDateTime start = Utils.dateToTypeZoneDateTime("2020-01-01");
+        ZonedDateTime end = Utils.dateToTypeZoneDateTime("2020-01-03");
         course.setStartDate(start);
         course.setEndDate(end);
-        assertEquals(53, course.getWorkingDays());
+        assertEquals(2, course.getWorkingDays());
     }
     @Test
     public void getWorkingDays_Multiple_Year_Test() {
@@ -21,7 +21,7 @@ public class CourseTest {
         course.setStartDate(start);
         course.setEndDate(end);
 
-        assertEquals(879, course.getWorkingDays());
+        assertEquals(875, course.getWorkingDays());
     }
     @Test
     public void getWorkingDays_End_Before_Start_Test() {
@@ -40,5 +40,12 @@ public class CourseTest {
         course.setEndDate(end);
 
         assertEquals(1, course.getWorkingDays());
+    }
+    @Test
+    public void getHolidayCount_test(){
+        ZonedDateTime start = Utils.dateToTypeZoneDateTime("2020-01-05");
+        ZonedDateTime end = Utils.dateToTypeZoneDateTime("2021-12-30");
+        PublicHolidayService holidayService = new PublicHolidayService();
+        assertEquals(15 ,holidayService.getWeekDayHolidayCount(start, end));
     }
 }
