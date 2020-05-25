@@ -1,5 +1,8 @@
 package University;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
@@ -23,7 +26,7 @@ public class Course {
 
     }
 
-    public long getWorkingDays() {
+    public long getWorkingDays() throws IOException, JSONException {
         LocalDate start = startDate.toLocalDate();
         LocalDate end = endDate.toLocalDate().plusDays(1);
 
